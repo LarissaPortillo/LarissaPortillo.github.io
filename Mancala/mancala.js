@@ -1,6 +1,14 @@
 //set the board, 4 stones in each socket except mancala which are index 6 and 13
 let board=[4,4,4,4,4,4,0,4,4,4,4,4,4,0];
 
+// function to update board stats
+const setStats=(array)=>{
+    for(i=0;i<array.length;i++){
+        let statBox=document.querySelector(`.stat${i}`);
+        console.log(statBox);
+        statBox.textContent=array[i];
+    }
+}
 
 //find index where stone lands
 const findPosition=(selection, stones)=>{ 
@@ -23,16 +31,39 @@ const distributeStns=(selection,stones)=>{
     }
 }
 
+//function that picks a random number from a given range, bounds are included
+let rnd=(min,max)=> (Math.random()*(max-min)+min)
 
 
+//gameplay at the press of start button
+
+let startBtn=document.querySelector('.start')
+
+startBtn.addEventListener('click',function(){
+    console.log('clicked start')
+})
+
+//set the board
+setStats(board);
+
+//add the event listeners to the sockets
+for(i=0;i<=5;i++){
+    let socket=document.querySelector(`.socket${i}`);
+    socket.addEventListener('click',function(){
+        console.log(socket.className+'click');
+    });
+}
+
+
+let computerSelection=rnd(7,12);
 let playerSelection;
 
 
 let stns=board[playerSelection];
 
 if(stns!=0){//not empty
-    let pos=findPosition(playerSelection,stns)
-    distributeStns=(playerSelection,stns)
+    let pos=findPosition(playerSelection,stns);
+    distributeStns(playerSelection,stns);
     if(board[pos]==1 && pos<6){
         console.log('You landed on an empty socket! Collect your opponents stones')
         board[pos]+=board[12-pos]+1

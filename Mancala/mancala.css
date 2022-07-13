@@ -1,9 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-h1{
-    font-family: 'Philosopher';
-    text-align: center;
+
+nav{
+    padding:10px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
 }
+
+#title{
+    font-family: 'Philosopher';
+    color: #383736;
+    margin:auto;
+    padding-left: 2rem;
+
+}
+
+#info{
+    border-radius: 50%;
+    color:white;
+    background-color: #383736;
+    height: 2rem;
+    width: 2rem;
+    font-style:italic;
+    font-family: 'Philosopher';
+   
+}
+#info:hover{
+    color:#383736;
+    background-color: white;
+}
+
+.startbtn{
+    display: flex;
+    justify-content: center;
+} 
+button{
+    position: relative; 
+    height: 3rem;
+    width: 10rem;
+    font-weight: 700; 
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #383736;
+    border: 2px #383736 solid;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    transition: 0.08s ease-in;
+}
+.start:hover {
+    color: white; 
+}
+
+.start:before {
+    content: ""; 
+    position: absolute; 
+    background: #383736;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: -1;
+    transition: top 0.09s ease-in;
+}
+.start:hover:before {
+    top: 0;
+}
+.start:active{
+    background: #575553;
+    transition: top 0.09s ease-in;
+}
+
+
 .container{
     display:flex;
     justify-content: center;
@@ -21,13 +90,13 @@ h1{
 
 }
 
-.mancala2{
+.mancala13{
     grid-area: 2/1/6/2;
     background-color:black;
     opacity:.5;
     border-radius: 30px;
 }
-.mancala2-name{
+.mancala13-name{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -37,88 +106,95 @@ h1{
     font-family:'Poppins';
     text-align: center;
 }
-.mancala2Stat{
+.stat13{
     grid-area:2/1/3/2 ;
     border-radius:30px;
     background-color: burlywood;
     opacity:.5;
+    text-align: center;
 }
-.socket21{
+.socket12{
     grid-area: 3/2/4/2 ;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat21{
+.stat12{
     grid-area: 2/2/3/3;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket22{
+.socket11{
     grid-area: 3/3/4/4;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat22{
+.stat11{
     grid-area: 2/3/3/4 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket23{
+.socket10{
     grid-area:3/4/4/5 ;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat23{
+.stat10{
     grid-area:2/4/3/5 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket24{
+.socket9{
     grid-area: 3/5/4/6 ;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat24{
+.stat9{
     grid-area: 2/5/3/6 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket25{
+.socket8{
     grid-area: 3/6/4/7;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat25{
+.stat8{
     grid-area:2/6/3/7;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket26{
+.socket7{
     grid-area: 3/7/4/8;
     border-radius: 50%;
     background-color: black;
     opacity:.5;
 }
-.stat26{
+.stat7{
     grid-area: 2/7/3/8 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
 
 
-.mancala1{
+.mancala6{
     grid-area: 2/8/6/9;
     background-color: #533621;
     opacity:.6;
     border-radius: 30px;
 }
 
-.mancala1-name{
+.mancala6-name{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -128,76 +204,88 @@ h1{
     text-align: center;
     font-family:'Poppins', sans-serif;
 }
-.mancala1Stat{
+.stat6{
     grid-area: 5/8/6/9 ;
     border-radius:30px;
     background-color: burlywood;
     opacity:.5;
+    text-align: center;
 }
-.socket11{
+.socket0{
     grid-area: 4/2/5/3 ;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
     
 }
-.stat11{
+.stat0{
     grid-area: 5/2/6/3 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket12{
+.socket1{
     grid-area: 4/3/5/4 ;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
 }
-.stat12{
+.stat1{
     grid-area: 5/3/6/4 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket13{
+.socket2{
     grid-area: 4/4/5/5;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
 }
-.stat13{
+.stat2{
     grid-area: 5/4/6/5;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket14{
+.socket3{
     grid-area: 4/5/5/6 ;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
 }
-.stat14{
+.stat3{
     grid-area: 5/5/6/6 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket15{
+.socket4{
     grid-area: 4/6/5/7;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
 }
-.stat15{
+.stat4{
     grid-area: 5/6/6/7 ;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
 }
-.socket16{
+.socket5{
     grid-area: 4/7/5/8;
     border-radius: 50%;
     background-color: #533621;
     opacity:.6;
 }
-.stat16{
+.stat5{
     grid-area: 5/7/6/8;
     background-color: burlywood;
     opacity:.8;
+    text-align: center;
+}
+
+.instructions{
+    font-family: 'Poppins';
+    text-align: center;
 }
