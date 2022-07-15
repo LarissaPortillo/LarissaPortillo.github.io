@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@keyframes pulsate{
+    50%{
+    box-shadow:0 0 20px blueviolet,
+    -20px 0 80px #0ff,
+    inset 0 0 50px #f0f,
+    inset -50px 0 80px blue,
+    inset 50px 0 80px #0ff,
+    inset -50px 0 300px #f0f,
+    inset 50px 0 300px blue;
+    }
+}
 
 nav{
     padding:10px;
@@ -118,6 +129,7 @@ button{
     border-radius: 50%;
     background-color: black;
     opacity:.5;
+    animation:pulsate 6s linear 3;
 }
 .stat12{
     grid-area: 2/2/3/3;
@@ -285,7 +297,53 @@ button{
     text-align: center;
 }
 
+
+
 .instructions{
     font-family: 'Poppins';
     text-align: center;
+}
+.x{
+    height: 6vh;
+    width:auto;
+    color: #6f7886;
+    border:none;
+    font-size:2rem;
+    margin:3% 88%;
+    
+}
+.infoText{
+    color: #6f7886;
+    z-index: 2;
+    position: relative;
+    padding:20px;
+    font-size:1rem;
+}
+
+#mancalaInfo{
+    font-family:'Poppins';
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-200%) scale(0);
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow:0 0 1rem 0 rgba(0,0,0,0.2);
+    font-size:2rem;
+    height:70vh;
+    width:50vw;
+    overflow: hidden;
+}
+
+#mancalaInfo:before{
+    background-color:(rgba(255,255,255,0.3));
+    backdrop-filter:blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    content: '';
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+#mancalaInfo.active{
+    transform: translate(-50%,-50%) scale(1);
 }
