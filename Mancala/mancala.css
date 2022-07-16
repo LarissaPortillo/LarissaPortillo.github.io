@@ -308,7 +308,17 @@ button{
     text-align: center;
 }
 
-
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #383736db; 
+    border-radius: 10px;
+}
 
 .instructions{
     font-family: 'Poppins';
@@ -317,22 +327,27 @@ button{
 .x{
     height: 6vh;
     width:auto;
-    color: #6f7886bb;
+    color: #383736;
     border:none;
-    font-size:2rem;
-    margin:3% 88%;
-    
+    font-size:30px;
+    font-weight: 50;
+    margin:2% 94%;
+}
+.x:after{
+    content: '\00d7'; 
 }
 .infoText{
-    color: rgba(0, 0, 0, 0.688);
-    z-index: 2;
+    color:#383736;
     position: relative;
-    padding:20px;
+    padding-left: 20px;
+    padding-right: 30px;
     font-size:1rem;
 }
 
 #mancalaInfo{
-    font-family:'Poppins' monospace;
+    font-family:'Poppins';
+    font-size: 5px;
+    font-weight: 100;
     position:fixed;
     top:50%;
     left:50%;
@@ -341,21 +356,19 @@ button{
     border-radius: 15px;
     box-shadow:0 0 1rem 0 rgba(0,0,0,0.2);
     font-size:2rem;
-    height:70vh;
-    width:50vw;
-    overflow: hidden;
-}
-
-#mancalaInfo:before{
+    height:80vh;
+    width:60vw;
+    overflow:scroll;
+    overflow-x:hidden; 
     background-color:(rgba(255,255,255,0.3));
     backdrop-filter:blur(10px) saturate(100%) contrast(45%) brightness(130%);
-    content: '';
-    height:100%;
-    width:100%;
-    position:absolute;
 }
 
 #mancalaInfo.active{
     transform: translate(-50%,-50%) scale(1);
+}
+
+.infoTitle{
+    text-decoration: underline;
 }
 svg {position: absolute }
