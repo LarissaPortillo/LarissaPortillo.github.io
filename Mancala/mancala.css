@@ -100,6 +100,17 @@ button{
     grid-template-rows: 1fr 1fr 3fr 3fr 1fr 1fr; /*6 rows*/
 
 }
+.m{
+    position:relative;
+}
+.s1{
+    position:relative;
+}
+
+.s1.hover:hover{
+    
+    animation:pulsate 2s linear infinite;
+}
 
 .mancala13{
     grid-area: 2/1/6/2;
@@ -129,7 +140,7 @@ button{
     border-radius: 50%;
     background-color: black;
     opacity:.5;
-    animation:pulsate 6s linear 3;
+
 }
 .stat12{
     grid-area: 2/2/3/3;
@@ -306,14 +317,14 @@ button{
 .x{
     height: 6vh;
     width:auto;
-    color: #6f7886;
+    color: #6f7886bb;
     border:none;
     font-size:2rem;
     margin:3% 88%;
     
 }
 .infoText{
-    color: #6f7886;
+    color: rgba(0, 0, 0, 0.688);
     z-index: 2;
     position: relative;
     padding:20px;
@@ -321,7 +332,7 @@ button{
 }
 
 #mancalaInfo{
-    font-family:'Poppins';
+    font-family:'Poppins' monospace;
     position:fixed;
     top:50%;
     left:50%;
@@ -347,3 +358,4 @@ button{
 #mancalaInfo.active{
     transform: translate(-50%,-50%) scale(1);
 }
+svg {position: absolute }
