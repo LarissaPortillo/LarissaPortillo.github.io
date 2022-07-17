@@ -103,11 +103,11 @@ button{
 .m{
     position:relative;
 }
-.s1{
+.r1{
     position:relative;
 }
 
-.s1.hover:hover{
+.r1.hover:hover{
     
     animation:pulsate 2s linear infinite;
 }
@@ -128,14 +128,14 @@ button{
     font-family:'Poppins';
     text-align: center;
 }
-.stat13{
+.hole13{
     grid-area:2/1/3/2 ;
     border-radius:30px;
     background-color: burlywood;
     opacity:.5;
     text-align: center;
 }
-.socket12{
+.hole12{
     grid-area: 3/2/4/2 ;
     border-radius: 50%;
     background-color: black;
@@ -148,7 +148,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket11{
+.hole11{
     grid-area: 3/3/4/4;
     border-radius: 50%;
     background-color: black;
@@ -160,7 +160,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket10{
+.hole10{
     grid-area:3/4/4/5 ;
     border-radius: 50%;
     background-color: black;
@@ -172,7 +172,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket9{
+.hole9{
     grid-area: 3/5/4/6 ;
     border-radius: 50%;
     background-color: black;
@@ -184,7 +184,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket8{
+.hole8{
     grid-area: 3/6/4/7;
     border-radius: 50%;
     background-color: black;
@@ -196,7 +196,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket7{
+.hole7{
     grid-area: 3/7/4/8;
     border-radius: 50%;
     background-color: black;
@@ -234,7 +234,7 @@ button{
     opacity:.5;
     text-align: center;
 }
-.socket0{
+.hole0{
     grid-area: 4/2/5/3 ;
     border-radius: 50%;
     background-color: #533621;
@@ -247,7 +247,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket1{
+.hole1{
     grid-area: 4/3/5/4 ;
     border-radius: 50%;
     background-color: #533621;
@@ -259,7 +259,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket2{
+.hole2{
     grid-area: 4/4/5/5;
     border-radius: 50%;
     background-color: #533621;
@@ -271,7 +271,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket3{
+.hole3{
     grid-area: 4/5/5/6 ;
     border-radius: 50%;
     background-color: #533621;
@@ -283,7 +283,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket4{
+.hole4{
     grid-area: 4/6/5/7;
     border-radius: 50%;
     background-color: #533621;
@@ -295,7 +295,7 @@ button{
     opacity:.8;
     text-align: center;
 }
-.socket5{
+.hole5{
     grid-area: 4/7/5/8;
     border-radius: 50%;
     background-color: #533621;
@@ -371,4 +371,7 @@ button{
 .infoTitle{
     text-decoration: underline;
 }
-svg {position: absolute }
+svg {
+    position: absolute;
+    pointer-events: none;
+ }
