@@ -2,24 +2,61 @@ let startBtn=document.querySelector('.start');
 let inst=document.querySelector('.instructions');
 let infoBtn=document.querySelector('#info');
 let info=document.querySelector('#mancalaInfo');
-let infoExt=document.querySelector('.x')
-let hover=document.querySelectorAll('.r1')
+let infoExt=document.querySelector('.x');
+let iconSett=document.querySelector('.fa-solid.fa-gear');
+let settExt=document.querySelector('.settX')
+let sett=document.querySelector('.settings');
+let hover=document.querySelectorAll('.r1');
 let proceed=true;
+let darkMode = document.querySelectorAll('input[name="darkMode"]');
+let body=document.querySelector('body');
+let bg=document.querySelector('.game');
+let btn=document.querySelector("button.start");
+let infoTxt=document.querySelector('.infoText')
 
+darkMode.forEach(radio=> radio.addEventListener('change',()=>{
+    if(radio.value==='on'){
+        body.style.backgroundColor='#090602';
+        body.style.color='rgb(224, 220, 213)';
+        bg.style.backgroundImage='url(https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/109/posts/35622/image/Tut_Aug2020_Wood_Grain_Texture_10.jpg)';
+        btn.style.color='rgb(224, 220, 213)';
+        infoTxt.style.color='black';
+        sett.style.color='black';
+    }
+    if(radio.value==='off'){
+        body.style.backgroundColor='white';
+        body.style.color='#383736';
+        bg.style.backgroundImage="url(https://unblast.com/wp-content/uploads/2018/12/Wood-Pattern-5.jpg)";   
+        btn.style.color='#383736';
+        infoTxt.style.color='#383736';
+        sett.style.color='#383736';
 
-//function that picks a random number from a given range, bounds are included
-let rnd=(min,max)=> Math.floor(Math.random()*((max+1)-min)+min)
-
+    }
+}))
 
 //if info button is clicked then the instructions will pop up 
 infoBtn.addEventListener('click',function(e){
     info.classList.add('active');
 })
 
+iconSett.addEventListener('click',function(){
+    sett.classList.add('active');
+})
+
+settExt.addEventListener('click',function(){
+    sett.classList.remove('active');
+})
+
+
 //exit pop up when x is clicked
 infoExt.addEventListener('click', function(e){
     info.classList.remove('active');
 } )
+
+
+
+//function that picks a random number from a given range, bounds are included
+let rnd=(min,max)=> Math.floor(Math.random()*((max+1)-min)+min)
 
 //set the board, 4 stones in each hole except mancala which are index 6 and 13
 const setBoard=()=>{

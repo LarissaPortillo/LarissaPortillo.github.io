@@ -2,19 +2,20 @@
 # Mancala Game / Mod 1 Project
 
 This is my Mod1 project for the PerScholas Software Engineering course. 
+
 Click [here][1] for the live site link to my game.
-***
+
 ## Table of Contents
-# 
+***
 1. Project Description
 2. Brief Example
 3. List of Features
-4. Installation instructions 
-5. unsolved problems
-***
+4. Technologies Used
+5. Installation instructions 
+6. Future Plans 
 
 ## Project Description
-#
+***
 For the project, we had to create a game with the following requirements: 
 * Two player game
 * Win state
@@ -24,34 +25,51 @@ For the project, we had to create a game with the following requirements:
   * A round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost 
 
 Based on the project requirements, I decided to create an online mancala game that someone could play on their own against a computer. The game follows the traditional rules of mancala. The player and the computer would take turns making a move until the end of the game. The game would be over once one of the rows on the board is empty of beans. At the end of the game, the beans collected by each mancala would be tallied and the one with the highest number would be the winner. 
-***
+
 ## Brief Example
-#
+***
 
 insert the brief example here
 
+## Approach Taken
 ***
-## List of Features
-# Use is able to start the game
-# User is able to select a hole on their side of the mancala when playing
-# User is able to view instructions of the game
-# User is able to start a new game after they have finished playing
+So, I 
+
+## Unsolved Problems
+***
+I was having a hard time figuring out how to properly use setTimeout in my code. I wish I could have gotten a good grasp of how it worked, so that every action could be timed properly. The poor timing of certain functions can be seen in parts of the game play. 
+
+## User Stories
+***
+* Use is able to start the game
+* user can click any legal move on the board 
+* User is able to view instructions of the game
+* User is able to start a new game after they have finished playing
+
 ***
 ## Technologies Used
-#
+***
 * HTML
 * CSS
 * Javascript
-***
+
 ## Installation
-# 
+***
 Click [here][2] to be redirected to the main github repo.
 
-* Fork and clone the repository to your machine
+Fork and clone the repository
+```
+$ git clone https://github.com/yourusername/repositoryname
+```
+Go to the project directory
+```
+$ cd repositoryname/Mancala
+```
+Open html in your browser to see the project
 
-***
+
 ## Future Plans
-# 
+***
 There are more features that I wanted to include in this game. Due to time, I was not able to add in all of the following features. 
 
 #### Add options
@@ -70,9 +88,7 @@ There are more features that I wanted to include in this game. Due to time, I wa
 #### Customization
 
 
-<!-- $ git clone https://github.com/yourusername/repositoryname
 
-$ cd yourusername/repositoryname/Mancala -->
 
 
 

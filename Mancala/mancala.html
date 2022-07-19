@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="mancala.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="mancala.js"></script>
+    <link rel="stylesheet" href="mancala.css">
+    <script src="https://kit.fontawesome.com/398a8dbccf.js" crossorigin="anonymous"></script>   
     <title>Mancala</title>
 </head>
 <body>
     <nav>
         <h1 id="title">Mancala</h1>
+        
         <button id="info">i</button>
+        <button class="fa-solid fa-gear fa-lg"> </button>
+        
     </nav>
 
     <div  class="startbtn">
@@ -22,40 +26,40 @@
     <div class="game">
         <div class="m mancala6"></div>
         <div class="mancala6-name">You</div>
-        <div class="stat6"></div>
+        <div class="stat stat6"></div>
         <div class="r1 hole0" value="0"> </div>
-        <div class="stat0"></div>
+        <div class="stat stat0"></div>
         <div class="r1 hole1"  value="1"></div>
-        <div class="stat1"></div>
+        <div class="stat stat1"></div>
         <div class="r1 hole2" value="2" ></div>
-        <div class="stat2"></div>
+        <div class="stat stat2"></div>
         <div class="r1 hole3" value="3"></div>
-        <div class="stat3"></div>
+        <div class="stat stat3"></div>
         <div class="r1 hole4" value="4"></div>
-        <div class="stat4"></div>
+        <div class="stat stat4"></div>
         <div class="r1 hole5" value="5"></div>
-        <div class="stat5"></div>
+        <div class="stat stat5"></div>
 
         <div class="m mancala13"></div>
         <div class="mancala13-name">Computer</div>
-        <div class="stat13"></div>
+        <div class="stat stat13"></div>
         <div class="hole12"></div>
-        <div class="stat12"></div>
+        <div class="stat stat12"></div>
         <div class="hole11"></div>
-        <div class="stat11"></div>
+        <div class="stat stat11"></div>
         <div class="hole10"></div>
-        <div class="stat10"></div>
+        <div class="stat stat10"></div>
         <div class="hole9"></div>
-        <div class="stat9"></div>
+        <div class="stat stat9"></div>
         <div class="hole8"></div>
-        <div class="stat8"></div>
+        <div class="stat stat8"></div>
         <div class="hole7"></div>
-        <div class="stat7"></div>
+        <div class="stat stat7"></div>
 
     </div>
     </div>
     <br>
-    <div class="instructions">Click 'Start Game' to play</div>
+    <p class="instructions">Click 'Start Game' to play</p>
     <div id="mancalaInfo">
         <button class="x"></button>
         <div class="infoText">
@@ -91,6 +95,14 @@
             </p>
         </div>
     </div>
+    <div class="settings">
+        <button class="settX"></button>
+        <form>
+            Dark mode:
+            <input type="radio" name="darkMode" value="on"><label>On</label>
+            <input type="radio" name="darkMode" value="off" checked><label>Off</label>
+        </form>
+    </div>
     <div id="sphere">
         <svg class='bean1' display="none" xmlns="http://www.w3.org/2000/svg" width="3.625vw" height="4.35vh" fill="none" viewBox="0 0 145 174">
             <path fill="#6E5F28" d="M73.232 95.297c1.653 13-11 59.5-28.5 65-31.336 9.849-53.731-58.151-39.204-100 1.498-4.316 3.39-8.354 5.704-12 17.027-26.818 72.543-60.465 80.136-42 .565 1.371.864 3.03.864 5 0 11.5-26.5 25-19 84Z"/>
@@ -115,6 +127,6 @@
           
           
     </div>
-    
+ 
 </body>
 </html>
