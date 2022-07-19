@@ -70,14 +70,14 @@ let renderBean=(isDistribution,position)=>{
                     for(j=1;j<=board[i];j++)
                     {
                         s=document.querySelector(`.hole${i}`); 
-                        s.style.position='relative'
+                        s.style.position='relative';
                         posX = rnd(4,55);
                         posY = rnd(4,65);
                         nb=beanArr[rnd(0,1)].cloneNode(true);
-                        nb.style.top=posY+'%'
-                        nb.style.left=posX+'%'
-                        s.appendChild(nb)
-                        nb.style.display='block'
+                        nb.style.top=posY+'%';
+                        nb.style.left=posX+'%';
+                        s.appendChild(nb);
+                        nb.style.display='block';
                     }
             } 
             else{
@@ -93,7 +93,6 @@ let renderBean=(isDistribution,position)=>{
 const setStats=(array)=>{
     for(i=0;i<array.length;i++){
         let statBox=document.querySelector(`.stat${i}`);
-        console.log(statBox);
         statBox.textContent=array[i];
     }
 }
@@ -163,7 +162,6 @@ const findPosition=(selection, stones, player)=>{
 
 //function to distribute stones on the board
 const distributeStns=(selection,stones,player)=>{
-    // setTimeout(()=>{
     let skip;
     if(player==1){
         skip=13;
@@ -172,48 +170,41 @@ const distributeStns=(selection,stones,player)=>{
         skip=6;
     }
     board[selection]=0;
-    let e=document.querySelector(`.stat${selection}`)
+    let e=document.querySelector(`.stat${selection}`);
     e.textContent=board[selection];
-    
     let eh= document.querySelector(`.hole${selection}`);
     let beanList=eh.querySelectorAll('svg');
     eh.innerHTML='';
-    console.log(beanList)
-    console.log(beanList[0])
-
-    for(i=1;i<=stones;i++){
-       
+    for(i=1;i<=stones;i++){     
         let pos=findPosition(selection,i,player);
-        let hb=document.querySelector(`.hole${pos}`)
+        let hb=document.querySelector(`.hole${pos}`);
         let mb;
-        console.log('distb pos'+pos)
         if(player==1){
-            mb=document.querySelector(`.mancala6`)
+            mb=document.querySelector(`.mancala6`);
         }
         else{
-            mb=document.querySelector(`.mancala13`)
+            mb=document.querySelector(`.mancala13`);
         }
-        
-        let hs=document.querySelector(`.stat${pos}`)
+        let hs=document.querySelector(`.stat${pos}`);
         if(pos!=skip){ //skip opponent mandala
                 board[pos]+=1;
                 if(pos==13){
-                    mb.appendChild(beanList[i-1])
+                    mb.appendChild(beanList[i-1]);
                 }
                 else if(pos==6){
-                    mb.appendChild(beanList[i-1])
+                    mb.appendChild(beanList[i-1]);
                 }
                 else{
-                    hb.appendChild(beanList[i-1])
+                    hb.appendChild(beanList[i-1]);
                 }
                 hs.textContent=board[pos];                  
         } 
-        } 
+    } 
 
     
 }
 
-const appendStolenBeans=(parent,arr)=>{
+const appendBeans=(parent,arr)=>{
     // console.log(parent,arr)
     for(i=0;i<arr.length;i++){
         parent.appendChild(arr[i]);
@@ -223,34 +214,31 @@ const appendStolenBeans=(parent,arr)=>{
 //function to steal oponents stones
 const stealStones=(indx,player)=>{
     let h=document.querySelector(`.hole${indx}`);
-    let hb=h.querySelector('svg')
-    let oh=document.querySelector(`.hole${12-indx}`)
-    
+    let hb=h.querySelector('svg');
+    let oh=document.querySelector(`.hole${12-indx}`);
     let ob=oh.querySelectorAll('svg');
-    console.log('steal'+ob+'from'+oh)
+    console.log('steal');
     let parent;
     if(board[12-indx]!=0){
         if(player==1){
-            parent=document.querySelector('.mancala6')
+            parent=document.querySelector('.mancala6');
             board[6]+=board[12-indx]+1;
             board[indx]=0;
             board[12-indx]=0;
             h.innerHTML='';
             parent.appendChild(hb);
-            appendStolenBeans(parent,ob);
+            appendBeans(parent,ob);
         }
         else{
-            console.log('steal')
-            parent=document.querySelector('.mancala13')
+            parent=document.querySelector('.mancala13');
             board[13]+=board[12-indx]+1;
             board[indx]=0;
             board[12-indx]=0;
             h.innerHTML='';
             parent.appendChild(hb);
-            appendStolenBeans(parent,ob)
+            appendBeans(parent,ob);
         }  
         setStats(board);
-        console.log(board);
     }
    
 }
@@ -270,10 +258,10 @@ const isSideEmpty=(start,end)=>{
 const isEmpty=()=>{
     if(isSideEmpty(0,5)===true || isSideEmpty(7,12)===true){
         if(isSideEmpty(0,5)){//if player side is empty
-            inst.textContent='Oop all your holes are empty. End of Game! Calculating...'
+            inst.textContent='Oop all your holes are empty. End of Game! Calculating...';
         }
         else{//oponent side is empty
-            inst.textContent=`Oop all of your opponent's holes are empty. End of Game! Calculating...`
+            inst.textContent=`Oop all of your opponent's holes are empty. End of Game! Calculating...`;
         }
         proceed=false;
     }
@@ -284,34 +272,68 @@ const endAppend=()=>{
     if(isSideEmpty(0,5)){
          m=document.querySelector('.mancala13');
         let h7=document.querySelector('.hole7');
-        appendStolenBeans(m,h7.querySelectorAll('svg'))
+        appendBeans(m,h7.querySelectorAll('svg'))
         let h8=document.querySelector('.hole8');
-        appendStolenBeans(m,h8.querySelectorAll('svg'))
+        appendBeans(m,h8.querySelectorAll('svg'))
         let h9=document.querySelector('.hole9');
-        appendStolenBeans(m,h9.querySelectorAll('svg'))
+        appendBeans(m,h9.querySelectorAll('svg'))
         let h10=document.querySelector('.hole10');
-        appendStolenBeans(m,h10.querySelectorAll('svg'))
+        appendBeans(m,h10.querySelectorAll('svg'))
         let h11=document.querySelector('.hole11');
-        appendStolenBeans(m,h11.querySelectorAll('svg'))
+        appendBeans(m,h11.querySelectorAll('svg'))
         let h12=document.querySelector('.hole12');
-        appendStolenBeans(m,h12.querySelectorAll('svg'))
+        appendBeans(m,h12.querySelectorAll('svg'))
     }
     else{
         m=document.querySelector('.mancala6');
-        let h0=document.querySelector('hole0');
-        appendStolenBeans(m,h0.querySelectorAll('svg'))
-        let h1=document.querySelector('hole1');
-        appendStolenBeans(m,h1.querySelectorAll('svg'))
-        let h2=document.querySelector('hole2');
-        appendStolenBeans(m,h2.querySelectorAll('svg'))
-        let h3=document.querySelector('hole3');
-        appendStolenBeans(m,h3.querySelectorAll('svg'))
-        let h4=document.querySelector('hole4');
-        appendStolenBeans(m,h4.querySelectorAll('svg'))
-        let h5=document.querySelector('hole5');
-        appendStolenBeans(m,h5.querySelectorAll('svg'))
+        let h0=document.querySelector('.hole0');
+        appendBeans(m,h0.querySelectorAll('svg'))
+        let h1=document.querySelector('.hole1');
+        appendBeans(m,h1.querySelectorAll('svg'))
+        let h2=document.querySelector('.hole2');
+        appendBeans(m,h2.querySelectorAll('svg'))
+        let h3=document.querySelector('.hole3');
+        appendBeans(m,h3.querySelectorAll('svg'))
+        let h4=document.querySelector('.hole4');
+        appendBeans(m,h4.querySelectorAll('svg'))
+        let h5=document.querySelector('.hole5');
+        appendBeans(m,h5.querySelectorAll('svg'))
 
     }
+}
+
+const pointerOn=(bool)=>{
+    let h0,h1,h2,h3,h4,h5;
+    if(bool){
+        h0=document.querySelector('.hole0');
+        h0.style.pointerEvents='auto';
+        h1=document.querySelector('.hole1');
+        h1.style.pointerEvents='auto';
+        h2=document.querySelector('.hole2');
+        h2.style.pointerEvents='auto';
+        h3=document.querySelector('.hole3');
+        h3.style.pointerEvents='auto';
+        h4=document.querySelector('.hole4');
+        h4.style.pointerEvents='auto';
+        h5=document.querySelector('.hole5');
+        h5.style.pointerEvents='auto';
+    }
+    else{
+        h0=document.querySelector('.hole0');
+        h0.style.pointerEvents='none';
+        h1=document.querySelector('.hole1');
+        h1.style.pointerEvents='none'
+        h2=document.querySelector('.hole2');
+        h2.style.pointerEvents='none';
+        h3=document.querySelector('.hole3');
+        h3.style.pointerEvents='none';
+        h4=document.querySelector('.hole4');
+        h4.style.pointerEvents='none';
+        h5=document.querySelector('.hole5');
+        h5.style.pointerEvents='none';
+
+    }
+
 }
 
 //distribute last stones at end of Game
@@ -321,7 +343,7 @@ const endCollection=()=>{
     if(isSideEmpty(0,5)){//if player side is empty
         for(i=7;i<=12;i++){
             h=document.querySelector(`.hole${i}`);
-            h.innerHTML=''
+            h.innerHTML='';
             count+=board[i];
             board[i]=0;
         }
@@ -330,15 +352,12 @@ const endCollection=()=>{
     else{//oponent side is empty
         for(i=0;i<=5;i++){
             h=document.querySelector(`.hole${i}`);
-            h.innerHTML=''
+            h.innerHTML='';
             count+=board[i];
             board[i]=0;
         }
         board[6]+=count;
     }
-    let m13=document.querySelector(".mancala13")
-    let m6=document.querySelector('.mancala6')
-    
     setTimeout(setStats(board),5000);
 }
 
@@ -346,7 +365,7 @@ const endCollection=()=>{
 const endTally=()=>{
     console.log('endTally')
     if(board[6]>board[13]){
-        inst.textContent='You Win'
+        inst.textContent='You Win';
         console.log('You win!');
     }
     else if(board[13]>board[6]){
@@ -368,27 +387,29 @@ const endGame=()=>{
         endCollection();
         endTally();
         removeHoleListener();
+        
     }
-    },10000);
+    },20000);
     
 }
 
 const opponentTurn=()=>{
     let p2;
-    let stns2=0
+    let stns2=0;
     let pos2;
     let cond;
     while(stns2===0){
         p2=rnd(7,12);
         stns2=board[p2];
-        pos2=findPosition(p2,stns2,1)
+        pos2=findPosition(p2,stns2,1);
     }
-    distributeStns(p2,stns2,2)
+    console.log('player 2 distributing')
+    distributeStns(p2,stns2,2);
     cond=pos2;
     while(cond==13){//land on mancala
         console.log('player2 land on mandala')
         p2=rnd(7,12);
-        pos2=findPosition(p1,stns2,1)
+        pos2=findPosition(p1,stns2,1);
         stns2=board[p2];
         
         distributeStns(p2,stns2,2);
@@ -413,17 +434,19 @@ const opponentTurn=()=>{
         inst.textContent='Choose a hole with beans';   
     }
     else{//none of above
-        console.log('player 1 turn')
+        console.log('player 1 turn');
         inst.textContent='Choose a hole with beans';   
     }
+    pointerOn(true);
+    endGame();
     
 }
 
-const click=(e)=>{
+const play=(e)=>{
     let path=e.composedPath(0);
     let p1=parseInt(path[0].getAttribute('value'));
     let stns1=board[p1];
-    let pos1=findPosition(p1,stns1,1)
+    let pos1=findPosition(p1,stns1,1);
     let c;
     let pos2;
     let p2;
@@ -446,52 +469,19 @@ const click=(e)=>{
         else if(board[pos1]==1 && pos1>=0 && pos1<=5){//land on empty
             console.log('player1 land on empty')
             stealStones(pos1,1);
-            inst.innerHTML=`Woah! You landed on an empty space. You can steal if they have stones! <br> Opponent's turn.`
+            inst.innerHTML=`Opponent's turn. Please wait...`;
             //opponent
-            while(stns2===0){
-                p2=rnd(7,12);
-                pos2=findPosition(p1,stns1,1)
-                stns2=board[p2];
-            }
-            distributeStns(p2,stns2,2)
-            cond=pos2;
-            while(cond===13){//land on mancala
-                console.log('player2 land on mandala')
-                p2=rnd(7,12);
-                pos2=findPosition(p1,stns1,1)
-                stns2=board[p2];
-                
-                distributeStns(p2,stns2,2);
-                if(board[pos2]==1 && pos2>=7 && pos2<=12){//land on empty
-                    console.log('player2 land on empty and steals');
-                    stealStones(pos2,2);
-                    console.log('player 1 turn') 
-                    inst.textContent='Choose a hole with beans';      
-                }
-                else{//none of above
-                    console.log('player 1 turn') 
-                    inst.textContent='Choose a hole with beans';   
-                }
-                cond=pos2;  
-            }
-            if(board[pos2]==1 && pos2>=7 && pos2<=12){//land on empty
-                console.log('player2 land on empty and steals');
-                stealStones(pos2,2);
-                inst.textContent='Choose a hole with beans';
-            }
-            else{//none of above
-                console.log('player 1 turn')
-                inst.textContent='Choose a hole with beans';
-            }
-            
-
+            pointerOn(false);
+            setTimeout(()=>{opponentTurn()}
+                ,4000)
         }
         else{
             console.log('player2 turn')
-            inst.textContent=`Opponent's turn. Please wait...`
+            inst.textContent=`Opponent's turn. Please wait...`;
             //opponent
+            pointerOn(false);
             setTimeout(()=>{opponentTurn()}
-                ,2000)
+                ,4000)
            
         }
         endGame();
@@ -500,9 +490,7 @@ const click=(e)=>{
   
 }
 
-
-let eventFunct=click.bind()
-
+let eventFunct=play.bind()
 
 //add the event listeners to the holes
 const holeListener=()=>{
@@ -511,7 +499,6 @@ const holeListener=()=>{
         hover[i].classList.add('hover');
         hole.addEventListener('click', eventFunct);
     }
-    
 }
 
 //remove the event listeners from the holes
@@ -523,17 +510,15 @@ const removeHoleListener=()=>{
     }
 }
 
-
 //begin game function
 const start=(e)=>{
     proceed=true;
-    console.log(board);
     board=setBoard();
     setStats(board);
     renderBean(false);
     startBtn.style.display='none';
     inst.textContent='Choose a hole with beans';
-    console.log(board)
+    pointerOn(true);
     holeListener();
 }
 
