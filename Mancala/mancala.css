@@ -128,7 +128,7 @@ button{
     font-family:'Poppins';
     text-align: center;
 }
-.hole13{
+.stat13{
     grid-area:2/1/3/2 ;
     border-radius:30px;
     background-color: burlywood;
@@ -374,4 +374,5 @@ button{
 svg {
     position: absolute;
     pointer-events: none;
+    opacity: .85;
  }
