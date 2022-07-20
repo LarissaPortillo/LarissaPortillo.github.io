@@ -12,7 +12,7 @@ let darkMode = document.querySelectorAll('input[name="darkMode"]');
 let body=document.querySelector('body');
 let bg=document.querySelector('.game');
 let btn=document.querySelector(".start");
-let infoTxt=document.querySelector('.infoText')
+let infoTxt=document.querySelector('.infoText');
 
 //being able to toggle between dark and light mode
 darkMode.forEach(radio=> radio.addEventListener('change',()=>{
@@ -32,7 +32,7 @@ darkMode.forEach(radio=> radio.addEventListener('change',()=>{
         infoTxt.style.color='#383736';
         sett.style.color='#383736';
         btn.addEventListener('mouseover',function(){btn.style.color='white'});
-        btn.addEventListener('mouseout',function(){btn.style.color='#383736'})
+        btn.addEventListener('mouseout',function(){btn.style.color='#383736'});
 
     }
 }))
@@ -58,7 +58,7 @@ settExt.addEventListener('click',function(){
 })
 
 //function that picks a random number from a given range, bounds are included
-let rnd=(min,max)=> Math.floor(Math.random()*((max+1)-min)+min)
+let rnd=(min,max)=> Math.floor(Math.random()*((max+1)-min)+min);
 
 //set the board, 4 stones in each hole except mancala which are index 6 and 13
 const setBoard=()=>{
@@ -107,7 +107,7 @@ const setStats=(array)=>{
 //find hole where stone last lands
 const findPosition=(selection, stones, player)=>{ 
     selection=parseInt(selection);
-    stones=parseInt(stones)
+    stones=parseInt(stones);
     let y=selection+stones;
     let x;
     if(stones%13===0){
@@ -224,7 +224,6 @@ const stealStones=(indx,player)=>{
     let hb=h.querySelector('svg');
     let oh=document.querySelector(`.hole${12-indx}`);
     let ob=oh.querySelectorAll('svg');
-    console.log('steal');
     let parent;
     if(board[12-indx]!=0){
         if(player==1){
@@ -280,32 +279,32 @@ const endAppend=()=>{
     if(isSideEmpty(0,5)){
          m=document.querySelector('.mancala13');
         let h7=document.querySelector('.hole7');
-        appendBeans(m,h7.querySelectorAll('svg'))
+        appendBeans(m,h7.querySelectorAll('svg'));
         let h8=document.querySelector('.hole8');
-        appendBeans(m,h8.querySelectorAll('svg'))
+        appendBeans(m,h8.querySelectorAll('svg'));
         let h9=document.querySelector('.hole9');
-        appendBeans(m,h9.querySelectorAll('svg'))
+        appendBeans(m,h9.querySelectorAll('svg'));
         let h10=document.querySelector('.hole10');
-        appendBeans(m,h10.querySelectorAll('svg'))
+        appendBeans(m,h10.querySelectorAll('svg'));
         let h11=document.querySelector('.hole11');
-        appendBeans(m,h11.querySelectorAll('svg'))
+        appendBeans(m,h11.querySelectorAll('svg'));
         let h12=document.querySelector('.hole12');
-        appendBeans(m,h12.querySelectorAll('svg'))
+        appendBeans(m,h12.querySelectorAll('svg'));
     }
     else{
         m=document.querySelector('.mancala6');
         let h0=document.querySelector('.hole0');
-        appendBeans(m,h0.querySelectorAll('svg'))
+        appendBeans(m,h0.querySelectorAll('svg'));
         let h1=document.querySelector('.hole1');
-        appendBeans(m,h1.querySelectorAll('svg'))
+        appendBeans(m,h1.querySelectorAll('svg'));
         let h2=document.querySelector('.hole2');
-        appendBeans(m,h2.querySelectorAll('svg'))
+        appendBeans(m,h2.querySelectorAll('svg'));
         let h3=document.querySelector('.hole3');
-        appendBeans(m,h3.querySelectorAll('svg'))
+        appendBeans(m,h3.querySelectorAll('svg'));
         let h4=document.querySelector('.hole4');
-        appendBeans(m,h4.querySelectorAll('svg'))
+        appendBeans(m,h4.querySelectorAll('svg'));
         let h5=document.querySelector('.hole5');
-        appendBeans(m,h5.querySelectorAll('svg'))
+        appendBeans(m,h5.querySelectorAll('svg'));
 
     }
 }
@@ -371,17 +370,17 @@ const endCollection=()=>{
 
 //tally score at end of game and proclaim winner
 const endTally=()=>{
-    console.log('endTally')
+   
     if(board[6]>board[13]){
         inst.textContent='You Win';
-        console.log('You win!');
+      
     }
     else if(board[13]>board[6]){
         inst.textContent='You lose. Computer Wins!';
-        console.log('You lose. Computer Wins!');
+        
     }
     else{
-        console.log(`Tie!`);
+       
         inst.textContent='Tie!';
     }
 }
@@ -412,12 +411,12 @@ const opponentTurn=()=>{
         stns2=board[p2];
         pos2=findPosition(p2,stns2,2);
     }
-    console.log('player 2 distributing')
+   
     distributeStns(p2,stns2,2);
     cond=pos2;
     while(cond==13 && proceed===true){//land on mancala
         endGame();
-        console.log('player2 land on mancala')
+      
         p2=rnd(7,12);
         stns2=board[p2];
         pos2=findPosition(p2,stns2,2);
@@ -427,30 +426,30 @@ const opponentTurn=()=>{
             stns2=board[p2];
             pos2=findPosition(p2,stns2,2);
         }
-        console.log('player 2 distributing again')
+       
         distributeStns(p2,stns2,2);
         if(board[pos2]==1 && pos2>=7 && pos2<=12 && proceed===true){//land on empty
-            console.log('player2 land on empty and steals');
+          
             stealStones(pos2,2);
-            console.log('player 1 turn')  
+          
             inst.textContent='Choose a hole with beans';   
              
         }
         else{//none of above
-            console.log('player 1 turn') 
+           
             inst.textContent='Choose a hole with beans';    
               
         }
         cond=pos2;  
     }
     if(board[pos2]==1 && pos2>=7 && pos2<=12 && proceed===true){//land on empty
-        console.log('player2 land on empty and steals');
+       
         stealStones(pos2,2);
-        console.log('player 1 turn')
+      
         inst.textContent='Choose a hole with beans';   
     }
     else{//none of above
-        console.log('player 1 turn');
+       
         inst.textContent='Choose a hole with beans';   
     }
     pointerOn(true);
@@ -466,20 +465,20 @@ const play=(e)=>{
     let c, pos2, p2, cond;
     let stns2=0;
     if(stns1==0){//no stones in selected hole
-        console.log('player1 chose empty hole')
+       
         inst.textContent=`That's empty. Please choose a hole with beans.`;
         endGame();
     }
     else{//hole isn't empty
-        console.log("p1 distributing");
+       
         distributeStns(p1,stns1,1);
         //check where the last bean landed
         if(pos1===6){//landed on mancala
             inst.textContent='Nice Move, you landed on your mancala. Go again!';
-            console.log('player1 land on mancala')
+          
         }
         else if(board[pos1]==1 && pos1>=0 && pos1<=5){//land on empty
-            console.log('player1 land on empty')
+            
             stealStones(pos1,1);
             inst.innerHTML=`Opponent's turn. Please wait...`;
             //opponent
@@ -488,7 +487,7 @@ const play=(e)=>{
                 ,4000)
         }
         else{
-            console.log('player2 turn')
+          
             inst.textContent=`Opponent's turn. Please wait...`;
             //opponent
             pointerOn(false);
@@ -499,7 +498,7 @@ const play=(e)=>{
     }
 }
 
-let eventFunct=play.bind()
+let eventFunct=play.bind();
 
 //add the event listeners to the holes
 const holeListener=()=>{
