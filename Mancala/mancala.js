@@ -14,6 +14,7 @@ let bg=document.querySelector('.game');
 let btn=document.querySelector("button.start");
 let infoTxt=document.querySelector('.infoText')
 
+//being able to toggle between dark and light mode
 darkMode.forEach(radio=> radio.addEventListener('change',()=>{
     if(radio.value==='on'){
         body.style.backgroundColor='#090602';
@@ -39,21 +40,20 @@ infoBtn.addEventListener('click',function(e){
     info.classList.add('active');
 })
 
-iconSett.addEventListener('click',function(){
-    sett.classList.add('active');
-})
-
-settExt.addEventListener('click',function(){
-    sett.classList.remove('active');
-})
-
-
 //exit pop up when x is clicked
 infoExt.addEventListener('click', function(e){
     info.classList.remove('active');
 } )
 
+//if settings icon clicked div will pop up
+iconSett.addEventListener('click',function(){
+    sett.classList.add('active');
+})
 
+//exit settings pop when x is clicked
+settExt.addEventListener('click',function(){
+    sett.classList.remove('active');
+})
 
 //function that picks a random number from a given range, bounds are included
 let rnd=(min,max)=> Math.floor(Math.random()*((max+1)-min)+min)
@@ -64,47 +64,15 @@ const setBoard=()=>{
 }
 let board=setBoard();
 
-
-let renderBean=(isDistribution,position)=>{
+//render beans on board
+let renderBean=()=>{
     let bean1=document.querySelector('.bean1');
     let bean2=document.querySelector('.bean2');
     let beanArr=[bean1,bean2];
     let nb, s, posX, posY;
-    if(isDistribution){//if distribution is true
-        setTimeout(()=>{
-        console.log("setTimeout");
-        if(position===6 || position===13){
-            
-            s=document.querySelector(`.mancala${position}`); 
-            s.style.position='relative';
-            posX = rnd(0,72);
-            posY = rnd(2,88);
-            nb=beanArr[rnd(0,1)].cloneNode(true);
-            nb.style.top=posY+'%';
-            nb.style.left=posX+'%';
-            s.appendChild(nb);
-            nb.style.display='block';
-      
-        }
-        else{
-           
-            s=document.querySelector(`.hole${position}`); 
-            s.style.position='relative';
-            posX = rnd(4,55);
-            posY = rnd(5,65);
-            nb=beanArr[rnd(0,1)].cloneNode(true);
-            nb.style.top=posY+'%';
-            nb.style.left=posX+'%';
-            s.appendChild(nb);
-            nb.style.display='block';
-        }        
-        },6000)
-        
-    }
-    else{//distribution is false, so we just set up the board
-        for(i=0;i<board.length;i++){
-            if(i!=6 && i!=13){
-                    for(j=1;j<=board[i];j++)
+    for(i=0;i<board.length;i++){
+        if(i!=6 && i!=13){
+            for(j=1;j<=board[i];j++)
                     {
                         s=document.querySelector(`.hole${i}`); 
                         s.style.position='relative';
@@ -115,14 +83,14 @@ let renderBean=(isDistribution,position)=>{
                         nb.style.left=posX+'%';
                         s.appendChild(nb);
                         nb.style.display='block';
-                    }
-            } 
-            else{
-                s=document.querySelector(`.mancala${i}`); 
-                s.innerHTML=' ';
-            }
-        }
-    }
+                    }        
+        } 
+        else{
+            s=document.querySelector(`.mancala${i}`); 
+            s.innerHTML=' ';
+        }            
+    }    
+    
 }
 
 
@@ -223,7 +191,7 @@ const distributeStns=(selection,stones,player)=>{
             mb=document.querySelector(`.mancala13`);
         }
         let hs=document.querySelector(`.stat${pos}`);
-        if(pos!=skip){ //skip opponent mandala
+        if(pos!=skip){ //skip opponent mancala
                 board[pos]+=1;
                 if(pos==13){
                     mb.appendChild(beanList[i-1]);
@@ -241,8 +209,8 @@ const distributeStns=(selection,stones,player)=>{
     
 }
 
+//add the bean icons to each hole
 const appendBeans=(parent,arr)=>{
-    // console.log(parent,arr)
     for(i=0;i<arr.length;i++){
         parent.appendChild(arr[i]);
     }
@@ -304,6 +272,7 @@ const isEmpty=()=>{
     }
 }
 
+//allocate the remaining beans to correct mancala at the end of the game
 const endAppend=()=>{
     let m;
     if(isSideEmpty(0,5)){
@@ -339,6 +308,7 @@ const endAppend=()=>{
     }
 }
 
+//disable or enable the pointer event option on holes
 const pointerOn=(bool)=>{
     let h0,h1,h2,h3,h4,h5;
     if(bool){
@@ -368,7 +338,6 @@ const pointerOn=(bool)=>{
         h4.style.pointerEvents='none';
         h5=document.querySelector('.hole5');
         h5.style.pointerEvents='none';
-
     }
 
 }
@@ -424,31 +393,38 @@ const endGame=()=>{
         endCollection();
         endTally();
         removeHoleListener();
-        
     }
     },20000);
     
 }
 
+//function to run when it's computer's turn
 const opponentTurn=()=>{
-    let p2;
+    endGame();
     let stns2=0;
-    let pos2;
-    let cond;
+    let p2, pos2, cond;
     while(stns2===0){
+        endGame();
         p2=rnd(7,12);
         stns2=board[p2];
-        pos2=findPosition(p2,stns2,1);
+        pos2=findPosition(p2,stns2,2);
     }
     console.log('player 2 distributing')
     distributeStns(p2,stns2,2);
     cond=pos2;
     while(cond==13){//land on mancala
-        console.log('player2 land on mandala')
+        endGame();
+        console.log('player2 land on mancala')
         p2=rnd(7,12);
-        pos2=findPosition(p1,stns2,1);
         stns2=board[p2];
-        
+        pos2=findPosition(p2,stns2,2);
+        while(stns2===0){
+            endGame();
+            p2=rnd(7,12);
+            stns2=board[p2];
+            pos2=findPosition(p2,stns2,2);
+        }
+        console.log('player 2 distributing again')
         distributeStns(p2,stns2,2);
         if(board[pos2]==1 && pos2>=7 && pos2<=12){//land on empty
             console.log('player2 land on empty and steals');
@@ -484,16 +460,12 @@ const play=(e)=>{
     let p1=parseInt(path[0].getAttribute('value'));
     let stns1=board[p1];
     let pos1=findPosition(p1,stns1,1);
-    let c;
-    let pos2;
-    let p2;
+    let c, pos2, p2, cond;
     let stns2=0;
-    let cond;
     if(stns1==0){//no stones in selected hole
         console.log('player1 chose empty hole')
         inst.textContent=`That's empty. Please choose a hole with beans.`;
         endGame();
-        
     }
     else{//hole isn't empty
         console.log("p1 distributing");
@@ -518,13 +490,10 @@ const play=(e)=>{
             //opponent
             pointerOn(false);
             setTimeout(()=>{opponentTurn()}
-                ,4000)
-           
+                ,4000)           
         }
         endGame();
     }
-    
-  
 }
 
 let eventFunct=play.bind()
@@ -552,7 +521,7 @@ const start=(e)=>{
     proceed=true;
     board=setBoard();
     setStats(board);
-    renderBean(false);
+    renderBean();
     startBtn.style.display='none';
     inst.textContent='Choose a hole with beans';
     pointerOn(true);
