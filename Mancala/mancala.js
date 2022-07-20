@@ -11,7 +11,7 @@ let proceed=true;
 let darkMode = document.querySelectorAll('input[name="darkMode"]');
 let body=document.querySelector('body');
 let bg=document.querySelector('.game');
-let btn=document.querySelector("button.start");
+let btn=document.querySelector(".start");
 let infoTxt=document.querySelector('.infoText')
 
 //being able to toggle between dark and light mode
@@ -31,6 +31,8 @@ darkMode.forEach(radio=> radio.addEventListener('change',()=>{
         btn.style.color='#383736';
         infoTxt.style.color='#383736';
         sett.style.color='#383736';
+        btn.addEventListener('mouseover',function(){btn.style.color='white'});
+        btn.addEventListener('mouseout',function(){btn.style.color='#383736'})
 
     }
 }))
