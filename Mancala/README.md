@@ -7,13 +7,16 @@ Click [here][1] for the live site link to my game.
 
 ## Table of Contents
 ***
-1. Project Description
-2. Brief Example
-3. List of Features
-4. Technologies Used
-5. Installation instructions 
-6. Future Plans 
+1. [Project Description](#project-description)
+2. [Brief Example](#brief-example)
+3. [Approach Taken](#approach-taken)
+4. [Unsolved Problems](#unsolved-problems)
+5. [User Stories](#user-stories)
+6. [Technologies Used](#technologies-used)
+7. [Installation](#installation)
+8. [Future Plans](#future-plans)
 
+<a name='project-description'></a>
 ## Project Description
 ***
 For the project, we had to create a game with the following requirements: 
@@ -26,11 +29,12 @@ For the project, we had to create a game with the following requirements:
 
 Based on the project requirements, I decided to create an online mancala game that someone could play on their own against a computer. The game follows the traditional rules of mancala. The player and the computer would take turns making a move until the end of the game. The game would be over once one of the rows on the board is empty of beans. At the end of the game, the beans collected by each mancala would be tallied and the one with the highest number would be the winner. 
 
+<a name='brief-example'></a>
 ## Brief Example
 ***
 
-insert the brief example here
 
+<a name='approach-taken'></a>
 ## Approach Taken
 ***
 ### Aesthetic
@@ -40,12 +44,12 @@ My first focus when approaching the game was how it would look. Overall, my goal
 I already know how to play mancala. So, I decided first to pseudo code all the possible outcomes of the game. 
 ![Pseudo Code for game](/LarissaPortillo.github.io/Mancala/PseudoCode.jpg)
 After the pseudo code, I needed to figure out how I would store information about the locations and the beans on the board. I needed to prioritize order. Since order mattered for this code and we did extensive learning on arrays in the course, I decided I would base the board on an array. With those decisions down, I proceeded to code the project.
-
+<a name='unsolved-problems'></a>
 ## Unsolved Problems
 ***
 I was having a hard time figuring out how to properly use setTimeout in my code. I wish I could have gotten a good grasp of how it worked, so that every action could be timed properly. The poor timing of certain functions can be seen in parts of the game play. 
 When the user wins the game, the whole page freezes. So, I believe there is an infinite while loop that happens at that point but I haven't had the chance to debug it.
-
+<a name='user-stories'></a>
 ## User Stories
 ***
 * Use is able to start the game
@@ -54,13 +58,14 @@ When the user wins the game, the whole page freezes. So, I believe there is an i
 * User is able to start a new game after they have finished playing
 * User is able to turn dark mode setting on and off 
 
-***
+<a name='technologies-used'></a>
 ## Technologies Used
 ***
 * HTML5
 * CSS
 * Javascript
 
+<a name='installation'></a>
 ## Installation
 ***
 Click [here][2] to be redirected to the main github repo.
@@ -75,7 +80,7 @@ $ cd repositoryname/Mancala
 ```
 Open html in your browser to see the project
 
-
+<a name='future-plans'></a>
 ## Future Plans
 ***
 There are more features that I wanted to include in this game. Due to time, I was not able to add in all of the following features. 
