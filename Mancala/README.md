@@ -46,7 +46,8 @@ My first focus when approaching the game was how it would look. Overall, my goal
 
 ### Coding the Game
 I already know how to play mancala. So, I decided first to pseudo code all the possible outcomes of the game. 
-![Pseudo Code for game](/LarissaPortillo.github.io/Mancala/PseudoCode.jpg)
+![PseudoCode](https://user-images.githubusercontent.com/59975898/179949896-ce5b4dff-e302-4b1b-b101-2a1604b05a0c.jpg)
+
 After the pseudo code, I needed to figure out how I would store information about the locations and the beans on the board. I needed to prioritize order. Since order mattered for this code and we did extensive learning on arrays in the course, I decided I would base the board on an array. With those decisions down, I proceeded to code the project.
 <a name='unsolved-problems'></a>
 ## Unsolved Problems
