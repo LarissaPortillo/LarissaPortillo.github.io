@@ -44,6 +44,7 @@ After the pseudo code, I needed to figure out how I would store information abou
 ## Unsolved Problems
 ***
 I was having a hard time figuring out how to properly use setTimeout in my code. I wish I could have gotten a good grasp of how it worked, so that every action could be timed properly. The poor timing of certain functions can be seen in parts of the game play. 
+When the user wins the game, the whole page freezes. So, I believe there is an infinite while loop that happens at that point but I haven't had the chance to debug it.
 
 ## User Stories
 ***

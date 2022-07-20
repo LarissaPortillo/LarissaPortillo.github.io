@@ -382,6 +382,7 @@ const endTally=()=>{
     }
     else{
         console.log(`Tie!`);
+        inst.textContent='Tie!';
     }
 }
 
@@ -405,7 +406,7 @@ const opponentTurn=()=>{
     endGame();
     let stns2=0;
     let p2, pos2, cond;
-    while(stns2===0){
+    while(stns2===0 && proceed===true){
         endGame();
         p2=rnd(7,12);
         stns2=board[p2];
@@ -414,13 +415,13 @@ const opponentTurn=()=>{
     console.log('player 2 distributing')
     distributeStns(p2,stns2,2);
     cond=pos2;
-    while(cond==13){//land on mancala
+    while(cond==13 && proceed===true){//land on mancala
         endGame();
         console.log('player2 land on mancala')
         p2=rnd(7,12);
         stns2=board[p2];
         pos2=findPosition(p2,stns2,2);
-        while(stns2===0){
+        while(stns2===0 && proceed===true){
             endGame();
             p2=rnd(7,12);
             stns2=board[p2];
@@ -428,7 +429,7 @@ const opponentTurn=()=>{
         }
         console.log('player 2 distributing again')
         distributeStns(p2,stns2,2);
-        if(board[pos2]==1 && pos2>=7 && pos2<=12){//land on empty
+        if(board[pos2]==1 && pos2>=7 && pos2<=12 && proceed===true){//land on empty
             console.log('player2 land on empty and steals');
             stealStones(pos2,2);
             console.log('player 1 turn')  
@@ -442,7 +443,7 @@ const opponentTurn=()=>{
         }
         cond=pos2;  
     }
-    if(board[pos2]==1 && pos2>=7 && pos2<=12){//land on empty
+    if(board[pos2]==1 && pos2>=7 && pos2<=12 && proceed===true){//land on empty
         console.log('player2 land on empty and steals');
         stealStones(pos2,2);
         console.log('player 1 turn')
