@@ -34,6 +34,10 @@ Based on the project requirements, I decided to create an online mancala game th
 ***
 
 
+https://user-images.githubusercontent.com/59975898/179949600-f45f0c5d-c372-42e2-994e-b168ffd63e8a.mp4
+
+
+
 <a name='approach-taken'></a>
 ## Approach Taken
 ***
